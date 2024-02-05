@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stretch_timer/timer_page.dart';
 
 class AddTimerPage extends StatelessWidget {
   const AddTimerPage({Key? key, required this.title}) : super(key: key);
@@ -7,30 +8,31 @@ class AddTimerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Color(0xFF1976D2),
+        backgroundColor:const Color(0xFF1976D2),
         title: const Text('Add a Workout Timer'),
       ),
-      body: const Center(
+      body: Center(
         child: Padding(
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: <Widget>[
-              Padding(padding: EdgeInsets.only(bottom: 50)),
-              Row(
+              const Padding(padding: EdgeInsets.only(bottom: 20)),
+              const Row(
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Text(' How many exercises do \n you want in this timer?',
+                      Text(' How many exercises\ndo you want in this\ntimer?',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                        fontSize: 20
+                          fontSize: 23
                         ),
                       ),
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 30),
+                    padding: EdgeInsets.only(left: 100),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -41,22 +43,23 @@ class AddTimerPage extends StatelessWidget {
                   )
                 ]
               ),
-              Padding(padding: EdgeInsets.only(top: 20, bottom: 50)),
-              Row(
+              const Padding(padding: EdgeInsets.only(top: 20, bottom: 90)),
+              const Row(
                 children: [
                   Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(' How many seconds\n for each exercise?',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                      fontSize: 20
+                        fontSize: 23
                       ),
                     ),
                   ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 75),
+                    padding: EdgeInsets.only(left: 110),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -67,22 +70,23 @@ class AddTimerPage extends StatelessWidget {
                   )
                 ]
               ),
-              Padding(padding: EdgeInsets.only(top: 20, bottom: 50)),
-              Row(
+              const Padding(padding: EdgeInsets.only(top: 20, bottom: 90)),
+              const Row(
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Text(' How many seconds\n for each break in \n between?',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                        fontSize: 20
+                          fontSize: 23
                         ),
                       ),
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 75),
+                    padding: EdgeInsets.only(left: 110),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -94,7 +98,24 @@ class AddTimerPage extends StatelessWidget {
                 ]
               ),
               Row(
-                //SUBMIT/OK BUTTON HERE
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(padding: const EdgeInsets.only(top: 210),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF1976D2),
+                      ),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return const TimerPage(title: 'ThirdPage');
+                        }));
+                      },
+                      child: const Text('Submit', 
+                      style: TextStyle(color: Colors.black)),
+                    ),
+                  ),
+                ]
               ),
             ],
           )  
@@ -119,8 +140,12 @@ class _NumExercisesDropdownMenuState extends State<NumExercisesDropdownMenu> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(height: 20),
+        const SizedBox(height: 25, width: 25),
         DropdownButton<int>(
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 20
+          ),
           value: numExercies,
           items: List.generate(20, (index) {
             return DropdownMenuItem<int>(
@@ -156,6 +181,10 @@ class _SecondsExerciseDropdownMenuState extends State<SecondsExerciseDropdownMen
       children: [
         const SizedBox(height: 20),
         DropdownButton<int>(
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 20
+          ),
           value: secondsExercise,
           items: [15, 30, 45, 60].map((int seconds) {
             return DropdownMenuItem<int>(
@@ -191,6 +220,10 @@ class _SecondsBreakDropdownMenuState extends State<SecondsBreakDropdownMenu> {
       children: [
         const SizedBox(height: 20),
         DropdownButton<int>(
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 20
+          ),
           value: secondsBreak,
           items: [15, 30, 45, 60].map((int seconds) {
             return DropdownMenuItem<int>(
