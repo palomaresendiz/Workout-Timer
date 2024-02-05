@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-const List<int> numExercisesList = <int>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
-11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-
 class AddTimerPage extends StatelessWidget {
   const AddTimerPage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -38,21 +35,29 @@ class NumExercisesDropdownMenu extends StatefulWidget {
 }
 
 class _NumExercisesDropdownMenuState extends State<NumExercisesDropdownMenu> {
-  int dropdownValue = numExercisesList.first;
+  int numExercies = 1;
 
   @override
   Widget build(BuildContext context) {
-    return DropdownMenu<int>(
-      initialSelection: numExercisesList.first,
-      onSelected: (int? value) {
-        // This is called when the user selects an item.
-        setState(() {
-          dropdownValue = value!;
-        });
-      },
-      dropdownMenuEntries: numExercisesList.map<DropdownMenuEntry<int>>((int value) {
-        return DropdownMenuEntry<int>(value: value, label: 'boogah');
-      }).toList(),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const SizedBox(height: 20),
+        DropdownButton<int>(
+          value: numExercies,
+          items: List.generate(20, (index) {
+            return DropdownMenuItem<int>(
+              value: index + 1,
+              child: Text((index + 1).toString()),
+            );
+          }),
+          onChanged: (value) {
+            setState(() {
+              numExercies = value!;
+            });
+          },
+        ),
+      ],
     );
   }
 }
