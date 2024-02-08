@@ -106,12 +106,12 @@ class AddTimerPage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF1976D2),
                       ),
-                      onPressed: () {
+                      onPressed: ()=> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
                         return const TimerPage(title: 'ThirdPage');
-                        }));
+                        }))
                       },
-                      child: const Text('Submit', 
+                      child: const Text('Start Timer', 
                       style: TextStyle(color: Colors.black)),
                     ),
                   ),
@@ -133,7 +133,7 @@ class NumExercisesDropdownMenu extends StatefulWidget {
 }
 
 class _NumExercisesDropdownMenuState extends State<NumExercisesDropdownMenu> {
-  int numExercies = 1;
+  int numExercises = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +146,7 @@ class _NumExercisesDropdownMenuState extends State<NumExercisesDropdownMenu> {
             color: Colors.black,
             fontSize: 20
           ),
-          value: numExercies,
+          value: numExercises,
           items: List.generate(20, (index) {
             return DropdownMenuItem<int>(
               value: index + 1,
@@ -155,7 +155,7 @@ class _NumExercisesDropdownMenuState extends State<NumExercisesDropdownMenu> {
           }),
           onChanged: (value) {
             setState(() {
-              numExercies = value!;
+              numExercises = value!;
             });
           },
         ),
