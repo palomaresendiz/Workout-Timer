@@ -9,7 +9,11 @@ class AddTimerPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:const Color(0xFF1976D2),
-        title: const Text('Add a Workout Timer'),
+        title: const Text('Add a Workout Timer',
+          style: TextStyle(fontSize: 23,
+            color: Colors.white
+          ),
+        ),
       ),
       body: Center(
         child: Padding(
@@ -112,7 +116,9 @@ class AddTimerPage extends StatelessWidget {
                         }))
                       },
                       child: const Text('Start Timer', 
-                      style: TextStyle(color: Colors.black)),
+                      style: TextStyle(color: Colors.white,
+                      fontSize: 20),
+                      ),
                     ),
                   ),
                 ]
@@ -211,7 +217,7 @@ class SecondsBreakDropdownMenu extends StatefulWidget {
 }
 
 class _SecondsBreakDropdownMenuState extends State<SecondsBreakDropdownMenu> {
-  int secondsBreak = 15;
+  int secondsBreak = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +231,7 @@ class _SecondsBreakDropdownMenuState extends State<SecondsBreakDropdownMenu> {
             fontSize: 20
           ),
           value: secondsBreak,
-          items: [15, 30, 45, 60].map((int seconds) {
+          items: [5, 10, 15, 20].map((int seconds) {
             return DropdownMenuItem<int>(
               value: seconds,
               child: Text('$seconds'),
@@ -241,3 +247,4 @@ class _SecondsBreakDropdownMenuState extends State<SecondsBreakDropdownMenu> {
     );
   }
 }
+

@@ -16,14 +16,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Welcome to my Workout Timer'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  //const MyHomePage({super.key, required this.title});
+  //final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -36,7 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:Color(0xFF1976D2),
-        title: Text(widget.title),
+        title: const Text('Welcome to my Workout Timer',
+          style: TextStyle(fontSize: 23,
+            color: Colors.white
+          ),
+        ),
       ),
       body: Center(
         child: Column(
