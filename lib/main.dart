@@ -42,12 +42,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'Select a past workout timer',
-              style: TextStyle(
-                fontSize: 20
-              ),
-            ),
             const SizedBox(height: 100),
             ClipRRect(
             borderRadius: BorderRadius.circular(4),
