@@ -9,7 +9,11 @@ class AddTimerPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor:const Color(0xFF1976D2),
-        title: const Text('Add a Workout Timer'),
+        title: const Text('Add a Workout Timer',
+          style: TextStyle(fontSize: 23,
+            color: Colors.white
+          ),
+        ),
       ),
       body: Center(
         child: Padding(
@@ -106,13 +110,18 @@ class AddTimerPage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF1976D2),
                       ),
-                      onPressed: () {
+                      onPressed: ()=> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return const TimerPage(title: 'ThirdPage');
-                        }));
+                          return TimerPage(title: 'ThirdPage',
+                          numExercises: _NumExercisesDropdownMenuState.numExercises,
+                          secondsExercise: _SecondsExerciseDropdownMenuState.secondsExercise,
+                          secondsBreak: _SecondsBreakDropdownMenuState.secondsBreak);
+                        }))
                       },
-                      child: const Text('Submit', 
-                      style: TextStyle(color: Colors.black)),
+                      child: const Text('Start Timer', 
+                      style: TextStyle(color: Colors.white,
+                      fontSize: 20),
+                      ),
                     ),
                   ),
                 ]
@@ -133,7 +142,7 @@ class NumExercisesDropdownMenu extends StatefulWidget {
 }
 
 class _NumExercisesDropdownMenuState extends State<NumExercisesDropdownMenu> {
-  int numExercies = 1;
+  static int numExercises = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +155,7 @@ class _NumExercisesDropdownMenuState extends State<NumExercisesDropdownMenu> {
             color: Colors.black,
             fontSize: 20
           ),
-          value: numExercies,
+          value: numExercises,
           items: List.generate(20, (index) {
             return DropdownMenuItem<int>(
               value: index + 1,
@@ -155,7 +164,7 @@ class _NumExercisesDropdownMenuState extends State<NumExercisesDropdownMenu> {
           }),
           onChanged: (value) {
             setState(() {
-              numExercies = value!;
+              numExercises = value!;
             });
           },
         ),
@@ -172,7 +181,7 @@ class SecondsExerciseDropdownMenu extends StatefulWidget {
 }
 
 class _SecondsExerciseDropdownMenuState extends State<SecondsExerciseDropdownMenu> {
-  int secondsExercise = 15;
+  static int secondsExercise = 15;
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +220,7 @@ class SecondsBreakDropdownMenu extends StatefulWidget {
 }
 
 class _SecondsBreakDropdownMenuState extends State<SecondsBreakDropdownMenu> {
-  int secondsBreak = 15;
+  static int secondsBreak = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +234,7 @@ class _SecondsBreakDropdownMenuState extends State<SecondsBreakDropdownMenu> {
             fontSize: 20
           ),
           value: secondsBreak,
-          items: [15, 30, 45, 60].map((int seconds) {
+          items: [5, 10, 15, 20].map((int seconds) {
             return DropdownMenuItem<int>(
               value: seconds,
               child: Text('$seconds'),
@@ -241,3 +250,4 @@ class _SecondsBreakDropdownMenuState extends State<SecondsBreakDropdownMenu> {
     );
   }
 }
+
