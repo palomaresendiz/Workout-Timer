@@ -112,7 +112,10 @@ class AddTimerPage extends StatelessWidget {
                       ),
                       onPressed: ()=> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return const TimerPage(title: 'ThirdPage');
+                          return TimerPage(title: 'ThirdPage',
+                          numExercises: _NumExercisesDropdownMenuState.numExercises,
+                          secondsExercise: _SecondsExerciseDropdownMenuState.secondsExercise,
+                          secondsBreak: _SecondsBreakDropdownMenuState.secondsBreak);
                         }))
                       },
                       child: const Text('Start Timer', 
@@ -139,7 +142,7 @@ class NumExercisesDropdownMenu extends StatefulWidget {
 }
 
 class _NumExercisesDropdownMenuState extends State<NumExercisesDropdownMenu> {
-  int numExercises = 1;
+  static int numExercises = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -178,7 +181,7 @@ class SecondsExerciseDropdownMenu extends StatefulWidget {
 }
 
 class _SecondsExerciseDropdownMenuState extends State<SecondsExerciseDropdownMenu> {
-  int secondsExercise = 15;
+  static int secondsExercise = 15;
 
   @override
   Widget build(BuildContext context) {
@@ -217,7 +220,7 @@ class SecondsBreakDropdownMenu extends StatefulWidget {
 }
 
 class _SecondsBreakDropdownMenuState extends State<SecondsBreakDropdownMenu> {
-  int secondsBreak = 5;
+  static int secondsBreak = 5;
 
   @override
   Widget build(BuildContext context) {
