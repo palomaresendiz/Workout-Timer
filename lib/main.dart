@@ -46,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset('assets/my_icon.png'),
             const SizedBox(height: 100),
             ClipRRect(
             borderRadius: BorderRadius.circular(4),
