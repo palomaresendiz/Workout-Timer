@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:stretch_timer/add_timer_page.dart';
 import 'dart:async';
-
-import 'package:stretch_timer/main.dart';
+import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class TimerPage extends StatefulWidget {
   const TimerPage({Key? key, required this.title, required this.numExercises, required this.secondsExercise, required this.secondsBreak}) : super(key: key);
@@ -17,19 +15,22 @@ class TimerPage extends StatefulWidget {
 }
 
 class _TimerPageState extends State<TimerPage> {
+  late Timer _timer;
   int _currentExercise = 1;
   int _secondsRemaining = 3;
-  late Timer _timer;
   bool _isExerciseTimer = false;
   bool _isCountdownTimer = true;
+  final player = AudioPlayer();
 
   @override
   void initState() {
     super.initState();
+    //_audioPlayer = AudioPlayer();
     _countdownTimer();
   }
 
   void _countdownTimer() {
+    player.play(AssetSource('countdown.mp3'));
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         _isCountdownTimer = true;
@@ -47,6 +48,7 @@ class _TimerPageState extends State<TimerPage> {
   }
 
   void _startExerciseTimer() {
+    player.play(AssetSource('exercise_start.mp3'));
     setState(() {
       _secondsRemaining = widget.secondsExercise;
       _currentExercise++;
@@ -71,6 +73,7 @@ class _TimerPageState extends State<TimerPage> {
   }
 
   void _startBreakTimer() {
+    player.play(AssetSource('break_start.mp3'));
     setState(() {
       _secondsRemaining = widget.secondsBreak;
       _isExerciseTimer = false;
