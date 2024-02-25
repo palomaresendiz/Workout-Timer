@@ -1,3 +1,4 @@
+import 'main.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -34,7 +35,7 @@ class _TimerPageState extends State<TimerPage> {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         _isCountdownTimer = true;
-        if (_secondsRemaining > 0) {
+        if (_secondsRemaining > 1) {
           _secondsRemaining--;
         } else {
           _timer.cancel();
@@ -58,14 +59,15 @@ class _TimerPageState extends State<TimerPage> {
 
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
-        if (_secondsRemaining > 0) {
+        if (_secondsRemaining > 1) {
           _secondsRemaining--;
         } else {
           _timer.cancel();
 
           if (_currentExercise <= widget.numExercises) {
-            // Start Break Timer
             _startBreakTimer();
+          } else {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()));
           }
         }
       });
@@ -73,26 +75,27 @@ class _TimerPageState extends State<TimerPage> {
   }
 
   void _startBreakTimer() {
-    player.play(AssetSource('break_start.mp3'));
+  player.play(AssetSource('break_start.mp3'));
+  setState(() {
+    _secondsRemaining = widget.secondsBreak;
+    _isExerciseTimer = false;
+    _isCountdownTimer = false;
+  });
+
+  _timer = Timer.periodic(Duration(seconds: 1), (timer) {
     setState(() {
-      _secondsRemaining = widget.secondsBreak;
-      _isExerciseTimer = false;
-      _isCountdownTimer = false;
-    });
+      if (_secondsRemaining > 1) {
+        _secondsRemaining--;
+      } else {
+        _timer.cancel();
 
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_secondsRemaining > 0) {
-          _secondsRemaining--;
-        } else {
-          _timer.cancel();
-
-          // Start the next Exercise Timer
+        if (_currentExercise <= widget.numExercises) {
           _startExerciseTimer();
-        }
-      });
+        } 
+      }
     });
-  }
+  });
+}
 
   @override
   Widget build(BuildContext context) {
