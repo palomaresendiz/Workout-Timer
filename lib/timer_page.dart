@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:stretch_timer/add_timer_page.dart';
+import 'main.dart';
 import 'dart:async';
-
-import 'package:stretch_timer/main.dart';
+import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class TimerPage extends StatefulWidget {
   const TimerPage({Key? key, required this.title, required this.numExercises, required this.secondsExercise, required this.secondsBreak}) : super(key: key);
@@ -17,23 +16,26 @@ class TimerPage extends StatefulWidget {
 }
 
 class _TimerPageState extends State<TimerPage> {
+  late Timer _timer;
   int _currentExercise = 1;
   int _secondsRemaining = 3;
-  late Timer _timer;
   bool _isExerciseTimer = false;
   bool _isCountdownTimer = true;
+  final player = AudioPlayer();
 
   @override
   void initState() {
     super.initState();
+    //_audioPlayer = AudioPlayer();
     _countdownTimer();
   }
 
   void _countdownTimer() {
+    player.play(AssetSource('countdown.mp3'));
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         _isCountdownTimer = true;
-        if (_secondsRemaining > 0) {
+        if (_secondsRemaining > 1) {
           _secondsRemaining--;
         } else {
           _timer.cancel();
@@ -47,6 +49,7 @@ class _TimerPageState extends State<TimerPage> {
   }
 
   void _startExerciseTimer() {
+    player.play(AssetSource('exercise_start.mp3'));
     setState(() {
       _secondsRemaining = widget.secondsExercise;
       _currentExercise++;
@@ -56,14 +59,15 @@ class _TimerPageState extends State<TimerPage> {
 
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
-        if (_secondsRemaining > 0) {
+        if (_secondsRemaining > 1) {
           _secondsRemaining--;
         } else {
           _timer.cancel();
 
           if (_currentExercise <= widget.numExercises) {
-            // Start Break Timer
             _startBreakTimer();
+          } else {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()));
           }
         }
       });
@@ -71,25 +75,27 @@ class _TimerPageState extends State<TimerPage> {
   }
 
   void _startBreakTimer() {
+  player.play(AssetSource('break_start.mp3'));
+  setState(() {
+    _secondsRemaining = widget.secondsBreak;
+    _isExerciseTimer = false;
+    _isCountdownTimer = false;
+  });
+
+  _timer = Timer.periodic(Duration(seconds: 1), (timer) {
     setState(() {
-      _secondsRemaining = widget.secondsBreak;
-      _isExerciseTimer = false;
-      _isCountdownTimer = false;
-    });
+      if (_secondsRemaining > 1) {
+        _secondsRemaining--;
+      } else {
+        _timer.cancel();
 
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_secondsRemaining > 0) {
-          _secondsRemaining--;
-        } else {
-          _timer.cancel();
-
-          // Start the next Exercise Timer
+        if (_currentExercise <= widget.numExercises) {
           _startExerciseTimer();
-        }
-      });
+        } 
+      }
     });
-  }
+  });
+}
 
   @override
   Widget build(BuildContext context) {
