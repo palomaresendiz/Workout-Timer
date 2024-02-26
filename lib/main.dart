@@ -22,9 +22,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  //const MyHomePage({super.key, required this.title});
-  //final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -34,19 +31,21 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 197, 217, 230),
       appBar: AppBar(
         backgroundColor:Color(0xFF1976D2),
         title: const Text('Welcome to my Workout Timer',
           style: TextStyle(fontSize: 23,
-            color: Colors.white
+            color: Colors.white,
           ),
         ),
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Image.asset('assets/my_icon.png'),
+            const Padding(padding: EdgeInsets.only(top: 120)),
             const SizedBox(height: 100),
             ClipRRect(
             borderRadius: BorderRadius.circular(4),
