@@ -1,5 +1,7 @@
 ## Workout Timer 
 
+<img src="./assets/my_icon.png" alt="App Icon" width="250" height="250"/>
+
 ####
 A timer application that takes in user input to customize the duration and repetition based on workout needs, built with Dart and Flutter.
 
