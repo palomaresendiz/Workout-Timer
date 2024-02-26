@@ -4,7 +4,7 @@
 
 ####
 
-A mobile application that takes in user input to customize the duration and repetition based on workout needs, built with Dart and Flutter.
+A mobile application that takes in user input to customize the timer duration and repetition based on workout needs, built with Dart and Flutter.
 
 ## Project Demo
 
