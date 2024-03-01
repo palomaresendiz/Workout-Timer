@@ -6,11 +6,12 @@
 
 A mobile application that takes in user input to customize the timer duration and repetition based on workout needs, built with Dart and Flutter.
 
-## Project Demo
+## Demo
 
 ####
 
-[ INSERT VIDEO LINK HERE ]
+[![Demo Video](https://img.youtube.com/vi/u_FQzJo8Nws/0.jpg)](https://youtu.be/u_FQzJo8Nws)
+
   
 
 ## Screenshots
