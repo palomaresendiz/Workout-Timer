@@ -54,5 +54,5 @@ This was a 2-week long personal project aimed to familiarize myself with buildin
 
 One of the main obstacles I ran into was adding sound. The current audio plugin, audioplayers, had some bugs that weren't allowing me to play sound effects. Ultimately, I had to upgrade the plugin to audioplayers 5.2.1 to get the sound to work. I learned to inspect and configure the pubspec.yaml because of this hurdle.
 
-I chose to work with the open source framework, Flutter because it is growing in popularity and I wanted to challenge myself by developing my app in Dart, a language I hadn't used before. I gained experience in setting up an SDK, configuring plugins and designing pages for a mobile app.
+I chose to work with the open source framework, Flutter because it is growing in popularity and I wanted to challenge myself by developing my app in Dart, a language I hadn't used before. Flutter is a good framework to learn because it is applicable to both Android and IOS. I gained experience in setting up an SDK, configuring plugins and designing pages for a mobile app.
 
