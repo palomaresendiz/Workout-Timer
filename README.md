@@ -4,7 +4,10 @@
 
 ####
 
-A mobile application that takes in user input to customize the timer duration and repetition based on workout needs, built with Dart and Flutter.
+A mobile application that takes in user input to customize the timer duration and repetition based on workout needs, built with Dart and Flutter.   
+
+  
+I designed and developed this workout timer app because the default timer app on the iPhone just wasn't enough for me. I wanted a timer that could repeat itself based on the number of repetitions I input. This is useful when doing circuits back to back. Also, the iPhone timer disrupts my music every time it goes off! I created a solution for a daily problem in my life. This timer facilitates repetitive timers that can be customized to my workout duration and don't disrupt my music yet still set off sounds to let me know when it goes off. 
 
 ## Demo
 
